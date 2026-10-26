@@ -1,0 +1,62 @@
+spring:
+  application:
+    name: eco-tech-backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ecotech
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    baseline-version: 0
+  mvc:
+    request:
+      max-file-size: 5MB
+      max-request-size: 10MB
+
+server:
+  port: ${PORT:8080}
+
+logging:
+  level:
+    com.ecotech.backend: INFO
+    org.springframework.web: INFO
+    org.hibernate.SQL: WARN
+
+app:
+  jwt:
+    secret: your-super-long-secure-random-secret-key-that-is-at-least-32-bytes-long
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:*}
+  storage:
+    local-path: ${STORAGE_LOCAL_PATH:./uploads}
+    supabase-bucket: ${SUPABASE_STORAGE_BUCKET:reports}
+    supabase-url: ${SUPABASE_STORAGE_URL:#{null}}
+    supabase-key: ${SUPABASE_STORAGE_KEY:#{null}}
+  telegram:
+    bot-token: ${TELEGRAM_BOT_TOKEN:#{null}}
+  push:
+    vapid-public-key: ${VAPID_PUBLIC_KEY:#{null}}
+    vapid-private-key: ${VAPID_PRIVATE_KEY:#{null}}
+    vapid-subject: ${VAPID_SUBJECT:mailto:admin@ecotech.local}
+  alerts:
+    ingest-interval-ms: ${ALERTS_INGEST_INTERVAL_MS:900000}
+  eskom:
+    base-url: ${ESKOM_BASE_URL:https://developer.sepush.co.za/business/2.0}
+    api-key: ${ESKOM_API_KEY:#{null}}
+  open-meteo:
+    base-url: ${APP_OPEN_METEO_BASE_URL:https://api.open-meteo.com/v1}
+  usage:
+    water-tariff: ${APP_USAGE_WATER_TARIFF:#{null}}
+    energy-tariff: ${APP_USAGE_ENERGY_TARIFF:#{null}}

@@ -1,0 +1,35 @@
+{
+  "appId": "com.ecotech.app",
+  "appName": "EcoTech",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https",
+    "cleartext": true
+  },
+  "android": {
+    "buildOptions": {
+      "release": {
+        "keystorePath": "release.keystore",
+        "keystorePassword": "",
+        "keyAlias": "",
+        "keyPassword": ""
+      }
+    }
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "backgroundColor": "#0f5132",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP"
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#ffffff"
+    },
+    "Keyboard": {
+      "resize": "ionic",
+      "style": "DARK"
+    }
+  }
+}

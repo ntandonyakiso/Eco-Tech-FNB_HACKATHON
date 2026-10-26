@@ -1,0 +1,22 @@
+﻿# Java / Maven
+target/
+*.class
+*.log
+
+# Node / Frontend
+node_modules/
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+
+# IDE settings
+.idea/
+.vscode/
+*.iml
+
+# OS generated files
+.DS_Store
+Thumbs.db
